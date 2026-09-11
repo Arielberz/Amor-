@@ -1,0 +1,5 @@
+export const totalExpenses = (event) => (event.expenses || []).reduce((sum, expense) => sum + Number(expense.amount || 0), 0)
+export const profit = (event) => Number(event.price || 0) - totalExpenses(event)
+export const balance = (event) => Number(event.price || 0) - Number(event.deposit || 0)
+export const monthKey = (date) => String(date || '').slice(0, 7)
+export const monthlyEvents = (events, date = new Date()) => events.filter((event) => monthKey(event.date) === `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`)
